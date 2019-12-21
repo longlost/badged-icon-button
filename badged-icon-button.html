@@ -3,65 +3,65 @@
 
   :host {
     display:  block;
-    position: relative; /* fixes safari badge placement bug, can also be set to absolute from outside */    
-    --lower-badge-color: 						var(--contant-light-text, white);
+    position: relative;  
+    --lower-badge-color:            var(--contant-light-text, white);
     --lower-badge-background-color: var(--app-error-color, red);
-    --upper-badge-color: 						var(--contant-light-text, white);
+    --upper-badge-color:            var(--contant-light-text, white);
     --upper-badge-background-color: var(--app-accent-color);
   }
 
-  .badges {  
-    transition: 					transform 0.3s ease-out;
-    transform:  					scale(0);
-    --paper-badge-height: 14px;
-    --paper-badge-width:  14px;
-    --paper-badge: {
-      display:     flex;
-      align-items: center; /* places label in center vertically */
-      position:    absolute;
-      right:       2px;
-      font-size:   8px;
-    };
+  .badge,
+  slot::slotted(*) {
+    display:         flex;
+    justify-content: center;
+    align-items:     center;
+    position:        absolute;
+    right:           2px;
+    height:          10px;
+    width:           10px;
+    padding:         2px;
+    font-size:       8px;
+    line-height:     normal;
+    border-radius:   50%;
+    overflow:        hidden;
+    transition:      transform 0.2s ease-out;
+    transform:       scale(0);
   }
 
-  .show-badge {
-    transform: scale(1);
+  #upperBadge,
+  slot[name="upper-badge"]::slotted(*) {
+    top: 2px;
+    background-color: var(--upper-badge-background-color);
+    color:            var(--upper-badge-color);
   }
 
-  #upperBadge {
-    transform-origin: 			 -9px 10px;
-    --paper-badge-background: var(--upper-badge-background-color);
-    --paper-badge: {
-      top:   2px;
-      color: var(--upper-badge-color);
-    };
-  }
-
-  #lowerBadge {
-    transform-origin: 			 -8px 26px;
-    --paper-badge-background: var(--lower-badge-background-color);
-    --paper-badge: {
-      top:   20px;
-      color: var(--lower-badge-color);
-    };
+  #lowerBadge,
+  slot[name="lower-badge"]::slotted(*) {
+    top: 24px;
+    background-color: var(--lower-badge-background-color);
+    color:            var(--lower-badge-color);
   }
 
 </style>
 
 
 <paper-icon-button id="icon-btn"
-									 aria-label="[[alt]]" 
+                   aria-label="[[alt]]" 
                    icon="[[icon]]">
 </paper-icon-button>
 
-<paper-badge id="upperBadge"
-             class="badges"
-             for="icon-btn"
-             label="[[upperLabel]]">
-</paper-badge> 
+<slot name="upper-badge"
+      on-slotchange="__upperSlotChanged">
+  <div id="upperBadge" 
+       class="badge">
+    [[upperLabel]]
+  </div>
+</slot>
 
-<paper-badge id="lowerBadge"
-             class="badges"
-             for="icon-btn"
-             label="[[lowerLabel]]">
-</paper-badge>    
+<slot name="lower-badge"
+      on-slotchange="__lowerSlotChanged">
+  <div id="lowerBadge" 
+       class="badge">
+    [[lowerLabel]]
+  </div>
+</slot>

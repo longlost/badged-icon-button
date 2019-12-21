@@ -11,7 +11,17 @@
   *   properites:
   *
   *  
-  *    
+  *    alt: String undefined -> <paper-icon-button> 'aria-label' data-binding.
+  *
+  *    icon: String undefined -> <paper-icon-button> 'icon' data-binding.
+  *
+  *    lowerLabel: String '!' -> Centered label displayed in lower badge.
+  *
+  *    upperLabel: String undefined -> Centered label displayed in upper badge.
+  *
+  *    showLower: Boolean undefined -> Lower badge state.
+  *
+  *    showUpper: Boolean undefined -> Upper badge state.
   * 
   *
   *
@@ -26,12 +36,7 @@ import {
   AppElement, 
   html
 }                 from '@longlost/app-element/app-element.js';
-import {
-  listen, 
-  schedule
-}                 from '@longlost/utils/utils.js';
 import htmlString from './badged-icon-button.html';
-import '@polymer/paper-badge/paper-badge.js';
 import '@polymer/paper-icon-button/paper-icon-button.js';
 
 
@@ -61,7 +66,9 @@ class BadgedIconButton extends AppElement {
 
       showUpper: Boolean,
 
-      _canShowBadges: Boolean,
+      _lowerBadge: Object,
+
+      _upperBadge: Object
       
     };
   }
@@ -69,57 +76,51 @@ class BadgedIconButton extends AppElement {
 
   static get observers() {
     return [
-      '__showLowerChanged(showLower, _canShowBadges)',
-      '__showUpperChanged(showUpper, _canShowBadges)'
+      '__showLowerChanged(_lowerBadge, showLower)',
+      '__showUpperChanged(_upperBadge, showUpper)'
     ];
   }
-  
 
-  async connectedCallback() {
+
+  connectedCallback() {
     super.connectedCallback();
 
-    // Fixes badge text misalignment in ios Safari.
-    const badges = this.selectAll('.badges');
-
-    badges.forEach(badge => {
-      const text = this.select('#badge-text', badge);
-      // Match line-height with default height of 
-      // container to vertically center text in it's span.
-      text.style['line-height'] = '11px'; // Default <paper-badge> height.
-    });
-
-    // Wait for cart badge at home screen starting in wrong position
-    await schedule();
-
-    badges.forEach(badge => {
-      badge.notifyResize();
-    });
-
-    await schedule();
-
-    this._canShowBadges = true;
+    this._upperBadge = this.$.upperBadge;
+    this._lowerBadge = this.$.lowerBadge;
   }
 
 
-  __controlBadge(id, show, canShow) {
-    if (!canShow) { return; }
+  __upperSlotChanged() {
+    const nodes      = this.slotNodes('slot[name="upper-badge"]');
+    this._upperBadge = nodes[0];
+  }
+
+
+  __lowerSlotChanged() {
+    const nodes      = this.slotNodes('slot[name="lower-badge"]');
+    this._lowerBadge = nodes[0];
+  }
+
+
+  __controlBadge(badge, show) {
+    if (!badge) { return; }
 
     if (show) {
-      this.$[id].classList.add('show-badge');
+      badge.style['transform'] = 'scale(1, 1)';
     }
     else {
-      this.$[id].classList.remove('show-badge');
+      badge.style['transform'] = 'scale(0, 0)';
     }
   }
 
 
-  __showLowerChanged(showLower, canShow) {
-    this.__controlBadge('lowerBadge', showLower, canShow);
+  __showLowerChanged(lowerBadge, showLower) {
+    this.__controlBadge(lowerBadge, showLower);
   }
 
 
-  __showUpperChanged(showUpper, canShow) {
-    this.__controlBadge('upperBadge', showUpper, canShow);
+  __showUpperChanged(upperBadge, showUpper) {
+    this.__controlBadge(upperBadge, showUpper);
   }
 
 
