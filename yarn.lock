@@ -22,7 +22,7 @@
   resolved "https://registry.yarnpkg.com/@longlost/lambda/-/lambda-2.0.4.tgz#a6c6279faa88668c44f5903032c5334d7dac0d51"
   integrity sha512-4z/x0PvFcdc3Oxa3HXuf2r9LzUdBJoIt73HO0q8RSJpAZusJmNv+0AvX8TrRRaSyKhtT9om4RCXq/G9d4vCzBg==
 
-"@longlost/utils@^1.1.6", "@longlost/utils@^1.3.5":
+"@longlost/utils@^1.1.6":
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/@longlost/utils/-/utils-1.3.5.tgz#400f36c28acf4f63039fb3b400ffc9db52a0caca"
   integrity sha512-Eh2MNzsn/0QgR2OkHGmQpPhFpn1UfoQyIjTSdTyzqr3AqcuGQV7pspnG7FBcm5Ina1Uf3rPz6zeX6sXHkuwiKA==
@@ -107,13 +107,6 @@
   dependencies:
     "@polymer/polymer" "^3.0.0"
 
-"@polymer/iron-resizable-behavior@^3.0.0-pre.26":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@polymer/iron-resizable-behavior/-/iron-resizable-behavior-3.0.1.tgz#e284348ed7c1c7e263f7039297532fa954025ea2"
-  integrity sha512-FyHxRxFspVoRaeZSWpT3y0C9awomb4tXXolIJcZ7RvXhMP632V5lez+ch5G5SwK0LpnAPkg35eB0LPMFv+YMMQ==
-  dependencies:
-    "@polymer/polymer" "^3.0.0"
-
 "@polymer/iron-validatable-behavior@^3.0.0-pre.26":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@polymer/iron-validatable-behavior/-/iron-validatable-behavior-3.0.1.tgz#73538f005a07741c31b6fc1e981168c3d3e0d92b"
@@ -129,17 +122,6 @@
   dependencies:
     "@polymer/polymer" "^3.0.0"
     marked "~0.3.9"
-
-"@polymer/paper-badge@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@polymer/paper-badge/-/paper-badge-3.1.0.tgz#d973de4c92324ced2b6c408082976b5343e26e2b"
-  integrity sha512-5SH5Xw9ji16BjIZT2wY7oVgWX01fDyzm/nGnDi55iujPGsfaPV1itze7c9/3wlmgI+b28KBApUY9hW8f0h2V6g==
-  dependencies:
-    "@polymer/iron-flex-layout" "^3.0.0-pre.26"
-    "@polymer/iron-icon" "^3.0.0-pre.26"
-    "@polymer/iron-resizable-behavior" "^3.0.0-pre.26"
-    "@polymer/paper-styles" "^3.0.0-pre.26"
-    "@polymer/polymer" "^3.0.0"
 
 "@polymer/paper-behaviors@^3.0.0-pre.27":
   version "3.0.1"
