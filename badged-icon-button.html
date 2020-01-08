@@ -3,9 +3,12 @@
 
   :host {
     display:  block;
-    position: relative;  
+    position: relative;
+    --badge-right:                  2px;
+    --lower-badge-top:              24px; 
     --lower-badge-color:            var(--contant-light-text, white);
     --lower-badge-background-color: var(--app-error-color, red);
+    --upper-badge-top:              2px;
     --upper-badge-color:            var(--contant-light-text, white);
     --upper-badge-background-color: var(--app-accent-color);
   }
@@ -16,7 +19,7 @@
     justify-content: center;
     align-items:     center;
     position:        absolute;
-    right:           2px;
+    right:           var(--badge-right);
     height:          10px;
     width:           10px;
     padding:         2px;
@@ -30,14 +33,14 @@
 
   #upperBadge,
   slot[name="upper-badge"]::slotted(*) {
-    top: 2px;
+    top:              var(--upper-badge-top);
     background-color: var(--upper-badge-background-color);
     color:            var(--upper-badge-color);
   }
 
   #lowerBadge,
   slot[name="lower-badge"]::slotted(*) {
-    top: 24px;
+    top:              var(--lower-badge-top);
     background-color: var(--lower-badge-background-color);
     color:            var(--lower-badge-color);
   }
@@ -47,7 +50,8 @@
 
 <paper-icon-button id="icon-btn"
                    aria-label="[[alt]]" 
-                   icon="[[icon]]">
+                   icon="[[icon]]"
+                   toggles="[[toggles]]">
 </paper-icon-button>
 
 <slot name="upper-badge"
