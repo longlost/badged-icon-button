@@ -66,6 +66,8 @@ class BadgedIconButton extends AppElement {
 
       showUpper: Boolean,
 
+      toggles: Boolean,
+
       _lowerBadge: Object,
 
       _upperBadge: Object
