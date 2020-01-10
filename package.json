@@ -1,6 +1,6 @@
 {
   "name": "@longlost/badged-icon-button",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "An icon-button with an upper and lower set of notification badges.",
   "main": "badged-icon-button.js",
   "scripts": {
