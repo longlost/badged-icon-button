@@ -4,14 +4,15 @@
   :host {
     display:  block;
     position: relative;
+    
     --lower-badge-top:              24px; 
     --lower-badge-right:            2px;
-    --lower-badge-color:            var(--contant-light-text, white);
+    --lower-badge-color:            var(--app-error-color-text, white);
     --lower-badge-background-color: var(--app-error-color, red);
     --upper-badge-top:              2px;
     --upper-badge-right:            2px;
-    --upper-badge-color:            var(--app-accent-color-text, white);
-    --upper-badge-background-color: var(--app-accent-color);
+    --upper-badge-color:            var(--app-secondary-color-text, white);
+    --upper-badge-background-color: var(--app-secondary-color);
   }
 
   :host([hidden]) {
