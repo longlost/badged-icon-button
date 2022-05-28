@@ -32,16 +32,17 @@
   **/
 
 
-import {AppElement, html} from '@longlost/app-core/app-element.js';
-import htmlString         from './badged-icon-button.html';
+import {AppElement} from '@longlost/app-core/app-element.js';
+import template     from './badged-icon-button.html';
 import '@polymer/paper-icon-button/paper-icon-button.js';
 
 
 class BadgedIconButton extends AppElement {
+
   static get is() { return 'badged-icon-button'; }
 
   static get template() {
-    return html([htmlString]);
+    return template;
   }
 
 
@@ -82,6 +83,7 @@ class BadgedIconButton extends AppElement {
 
 
   connectedCallback() {
+
     super.connectedCallback();
 
     this._upperBadge = this.$.upperBadge;
@@ -90,18 +92,21 @@ class BadgedIconButton extends AppElement {
 
 
   __upperSlotChanged() {
+
     const nodes      = this.slotNodes('slot[name="upper-badge"]');
     this._upperBadge = nodes[0];
   }
 
 
   __lowerSlotChanged() {
+
     const nodes      = this.slotNodes('slot[name="lower-badge"]');
     this._lowerBadge = nodes[0];
   }
 
 
   __controlBadge(badge, show) {
+
     if (!badge) { return; }
 
     if (show) {
@@ -114,31 +119,37 @@ class BadgedIconButton extends AppElement {
 
 
   __showLowerChanged(lowerBadge, showLower) {
+
     this.__controlBadge(lowerBadge, showLower);
   }
 
 
   __showUpperChanged(upperBadge, showUpper) {
+
     this.__controlBadge(upperBadge, showUpper);
   }
 
 
   showLowerBadge() {
+
     this.showLower = true;
   }
 
 
   hideLowerBadge() {
+
     this.showLower = false;
   }
 
 
   showUpperBadge() {
+
     this.showUpper = true;
   }
 
 
   hideUpperBadge() {
+    
     this.showUpper = false;
   }
 
